@@ -9,7 +9,7 @@ class MqttClientFactory():
         self.mqtt_client.on_connect = self.on_mqtt_connect
         self.mqtt_client.on_message = self.on_mqtt_message
         self.mqtt_client.connect(host, 1883, 60)
-        self.setup_motion_sensor()
+        self.setup_motion_sensor(17)
 
      # The callback for when the client receives a CONNACK response from the server.
     def on_mqtt_connect(self, client, userdata, flags, rc):
@@ -30,7 +30,7 @@ class MqttClientFactory():
         GPIO.add_event_detect(pinID, GPIO.RISING)
         GPIO.add_event_callback(pinID, self.on_motion_callback)
     
-    def on_motion_callback(self):
+    def on_motion_callback(self, etc):
         print("movement")
         self.mqtt_client.publish('actions/movement', 'moved!')
     
