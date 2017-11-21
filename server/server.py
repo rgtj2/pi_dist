@@ -31,8 +31,8 @@ class MyServerProtocol(WebSocketServerProtocol):
             print("Text message received: {0}".format(payload.decode('utf8')))
 
         if not isBinary:
-            channel = json.loads(payload)['channel']
-            value = json.loads(payload)['value']
+            channel = json.loads(payload.decode('utf8'))['channel']
+            value = json.loads(payload.decode('utf8'))['value']
             if 'actionrequest' in channel:
                 print('action request!!!!')
                 topic = channel.replace('actionrequest', 'publishedaction')

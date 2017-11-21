@@ -18,6 +18,7 @@ class MqttWebsocketProxyFactory():
         client.subscribe("test/+")
         client.subscribe("actions/+")
         client.subscribe("publishedaction/+")
+        client.subscribe("acknowledgedaction/+")
         client.publish("test/hey", 'heyheyheyh')
 
     # The callback for when a PUBLISH message is received from the server.
