@@ -9,6 +9,7 @@ class MqttClientFactory():
         self.mqtt_client.on_connect = self.on_mqtt_connect
         self.mqtt_client.on_message = self.on_mqtt_message
         self.mqtt_client.connect(host, 1883, 60)
+        self.setup_motion_sensor()
 
      # The callback for when the client receives a CONNACK response from the server.
     def on_mqtt_connect(self, client, userdata, flags, rc):
